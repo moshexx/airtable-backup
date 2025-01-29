@@ -9,7 +9,7 @@ import os
 BACKUP_CONFIG = {
     "schedule": {
         "frequency": "daily",     # Options: daily, weekly, monthly
-        "time": "23:00",         # Format: HH:MM
+        "time": "22:00",         # Format: HH:MM
         "retention_days": 30      # How many days to keep backups
     },
         "base_id": os.getenv('AIRTABLE_BASE_ID', 'default_base_id'),  # קבלה ממשתנה סביבה
