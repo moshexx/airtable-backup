@@ -109,10 +109,8 @@ python -m pip install -r requirements.txt
 
 ### Step 4: Set API Key & Airtable Base ID
 ```bash
-# Windows
-set AIRTABLE_API_KEY=your_api_key_here
-# Linux/Mac
-export AIRTABLE_API_KEY=your_api_key_here
+set AIRTABLE_API_KEY=your_api_key_here    # Windows
+export AIRTABLE_API_KEY=your_api_key_here # Linux/Mac
 
 set AIRTABLE_BASE_ID=your_base_id_here    # Windows
 export AIRTABLE_BASE_ID=your_base_id_here # Linux/Mac
@@ -140,6 +138,11 @@ BACKUP_CONFIG = {
 - Retention policy
 - Log settings
 
+### Check Environment
+```bash
+python src/check_environment.py
+```
+
 ## Daily Usage
 
 ### Run Single Backup
@@ -150,11 +153,6 @@ python src/backup.py
 ### Start Scheduled Backup
 ```bash
 python src/schedule_backup.py
-```
-
-### Check Environment
-```bash
-python src/check_environment.py
 ```
 
 ## Troubleshooting

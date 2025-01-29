@@ -113,10 +113,8 @@ python -m pip install -r requirements.txt
 
 ### שלב 4: הגדרת מפתח API וbase ID
 ```bash
-# Windows
-set AIRTABLE_API_KEY=your_api_key_here
-# Linux/Mac
-export AIRTABLE_API_KEY=your_api_key_here
+set AIRTABLE_API_KEY=your_api_key_here    # Windows
+export AIRTABLE_API_KEY=your_api_key_here # Linux/Mac
 
 set AIRTABLE_BASE_ID=your_base_id_here    # Windows
 export AIRTABLE_BASE_ID=your_base_id_here # Linux/Mac
@@ -144,6 +142,11 @@ BACKUP_CONFIG = {
 - מדיניות שמירת גיבויים
 - הגדרות לוג
 
+### בדיקת סביבת עבודה
+```bash
+python src/check_environment.py
+```
+
 ## שימוש שוטף
 
 ### הפעלת גיבוי חד פעמי
@@ -154,11 +157,6 @@ python src/backup.py
 ### הפעלת גיבוי מתוזמן
 ```bash
 python src/schedule_backup.py
-```
-
-### בדיקת סביבת עבודה
-```bash
-python src/check_environment.py
 ```
 
 ## פתרון בעיות
