@@ -1,0 +1,40 @@
+%%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'arial' }}}%%
+flowchart TD
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef success fill:#d4edda,stroke:#28a745,stroke-width:2px
+    classDef warning fill:#fff3cd,stroke:#ffc107,stroke-width:2px
+    classDef error fill:#f8d7da,stroke:#dc3545,stroke-width:2px
+    classDef primary fill:#cce5ff,stroke:#0d6efd,stroke-width:2px
+
+    Start[/"🚀 Start Backup"/] --> EnvCheck{{"🔍 Environment<br/>Check"}}
+    
+    EnvCheck -->|Failed| InstallReq["📦 Install<br/>Requirements"]
+    InstallReq --> EnvCheck
+    
+    EnvCheck -->|Success| LoadConfig["⚙️ Load<br/>Configuration"]
+    
+    LoadConfig --> ApiCheck{{"🔑 Check<br/>API Key"}}
+    ApiCheck -->|Invalid| SetKey["🔐 Set API Key"]
+    SetKey --> ApiCheck
+    
+    ApiCheck -->|Valid| GetTables["📋 Get Tables<br/>List"]
+    GetTables --> TableLoop["📊 Process<br/>Tables"]
+    TableLoop --> Download["⬇️ Download<br/>Data"]
+    Download --> SaveCSV["💾 Save to<br/>CSV"]
+    SaveCSV --> MoreTables{"More<br/>Tables?"}
+    
+    MoreTables -->|Yes| TableLoop
+    MoreTables -->|No| Cleanup["🧹 Cleanup Old<br/>Backups"]
+    
+    Cleanup --> Log["📝 Log<br/>Results"]
+    Log --> End[/"✅ Backup<br/>Complete"/]
+    
+    subgraph Schedule ["⏰ Scheduling"]
+        Timer["⏱️ Timer"] -->|Daily/Weekly| Start
+    end
+
+    class Start,End primary
+    class EnvCheck,ApiCheck,MoreTables warning
+    class InstallReq,SetKey error
+    class LoadConfig,GetTables,TableLoop,Download,SaveCSV,Cleanup,Log default
+    class Timer,Schedule success

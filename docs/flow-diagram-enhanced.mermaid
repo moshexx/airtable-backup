@@ -1,0 +1,40 @@
+%%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'arial', 'primaryColor': '#326ce5', 'primaryTextColor': '#fff', 'primaryBorderColor': '#255db1', 'lineColor': '#666', 'secondaryColor': '#f96', 'tertiaryColor': '#fff' }}}%%
+flowchart TD
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#333
+    classDef success fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#28a745
+    classDef warning fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#333
+    classDef error fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#dc3545
+    classDef primary fill:#cce5ff,stroke:#0d6efd,stroke-width:2px,color:#0d6efd
+    
+    Start[/"🚀 התחלת גיבוי"/] --> EnvCheck{{"🔍 בדיקת<br/>סביבה"}}
+    
+    EnvCheck -->|נכשל| InstallReq["📦 התקנת<br/>דרישות"]
+    InstallReq --> EnvCheck
+    
+    EnvCheck -->|הצליח| LoadConfig["⚙️ טעינת<br/>הגדרות"]
+    
+    LoadConfig --> ApiCheck{{"🔑 בדיקת<br/>מפתח API"}}
+    ApiCheck -->|לא תקין| SetKey["🔐 הגדרת<br/>מפתח API"]
+    SetKey --> ApiCheck
+    
+    ApiCheck -->|תקין| GetTables["📋 קבלת רשימת<br/>טבלאות"]
+    GetTables --> TableLoop["📊 עיבוד<br/>טבלאות"]
+    TableLoop --> Download["⬇️ הורדת<br/>נתונים"]
+    Download --> SaveCSV["💾 שמירה<br/>ל-CSV"]
+    SaveCSV --> MoreTables{"עוד<br/>טבלאות?"}
+    
+    MoreTables -->|כן| TableLoop
+    MoreTables -->|לא| Cleanup["🧹 ניקוי גיבויים<br/>ישנים"]
+    
+    Cleanup --> Log["📝 תיעוד<br/>תוצאות"]
+    Log --> End[/"✅ גיבוי<br/>הושלם"/]
+    
+    subgraph Schedule ["⏰ תזמון"]
+        Timer["⏱️ טיימר"] -->|יומי/שבועי| Start
+    end
+
+    class Start,End primary
+    class EnvCheck,ApiCheck,MoreTables warning
+    class InstallReq,SetKey error
+    class LoadConfig,GetTables,TableLoop,Download,SaveCSV,Cleanup,Log default
+    class Timer,Schedule success

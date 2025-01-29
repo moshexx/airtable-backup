@@ -1,0 +1,7 @@
+# requirements.txt
+requests>=2.31.0
+pandas>=2.1.0
+colorama>=0.4.6
+emoji>=2.8.0
+schedule>=1.2.0
+python-dotenv>=1.0.0
