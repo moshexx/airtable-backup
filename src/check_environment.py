@@ -167,23 +167,23 @@ def check_airtable_permissions():
         print_step(f"Error checking Airtable permissions: {str(e)}", 'error')
         return False
         
-def check_write_permissions() -> bool:
-    """
-    Check if the script has write permissions in the current directory.
+# def check_write_permissions() -> bool:
+#     """
+#     Check if the script has write permissions in the current directory.
     
-    Returns:
-        bool: True if write permissions OK, False otherwise
-    """
-    try:
-        test_file = "test_permissions.tmp"
-        with open(test_file, 'w') as f:
-            f.write("test")
-        os.remove(test_file)
-        print_step("Write permissions OK", 'success')
-        return True
-    except Exception as e:
-        print_step(f"No write permissions in current directory: {str(e)}", 'error')
-        return False
+#     Returns:
+#         bool: True if write permissions OK, False otherwise
+#     """
+#     try:
+#         test_file = "test_permissions.tmp"
+#         with open(test_file, 'w') as f:
+#             f.write("test")
+#         os.remove(test_file)
+#         print_step("Write permissions OK", 'success')
+#         return True
+#     except Exception as e:
+#         print_step(f"No write permissions in current directory: {str(e)}", 'error')
+#         return False
 
 def main():
     """
