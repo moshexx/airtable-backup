@@ -107,13 +107,15 @@ cd airtable-backup
 python -m pip install -r requirements.txt
 ```
 
-### Step 4: Set API Key
+### Step 4: Set API Key & Airtable Base ID
 ```bash
 # Windows
 set AIRTABLE_API_KEY=your_api_key_here
-
 # Linux/Mac
 export AIRTABLE_API_KEY=your_api_key_here
+
+set AIRTABLE_BASE_ID=your_base_id_here    # Windows
+export AIRTABLE_BASE_ID=your_base_id_here # Linux/Mac
 ```
 
 ## Configuration

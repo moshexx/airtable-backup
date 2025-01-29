@@ -4,13 +4,15 @@ Configuration file for Airtable Backup Tool.
 Contains all configurable parameters and settings.
 """
 
+import os
+
 BACKUP_CONFIG = {
     "schedule": {
         "frequency": "daily",     # Options: daily, weekly, monthly
         "time": "23:00",         # Format: HH:MM
         "retention_days": 30      # How many days to keep backups
     },
-    "base_id": "your_base_id",   # Your Airtable base ID
+        "base_id": os.getenv('AIRTABLE_BASE_ID', 'default_base_id'),  # קבלה ממשתנה סביבה
     "backup_dir": "airtable_backups",
     "log_file": "backup.log"
 }
