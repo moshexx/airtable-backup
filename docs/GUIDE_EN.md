@@ -83,6 +83,22 @@ airtable-backup/
 - emoji
 - schedule
 
+## 🔑 Airtable Permissions
+
+This tool requires minimal Airtable permissions:
+
+### Required Permissions
+- `data.records:read` - To read table records
+- `schema.bases:read` - To read table structure
+
+### Creating Minimal Access Token
+1. Go to [Airtable Token Creation](https://airtable.com/create/tokens)
+2. Click "Create Token"
+3. Give it a name (e.g., "Backup Read Access")
+4. Select only the required permissions above
+5. Select the specific base you want to backup
+6. Create and copy the token
+
 ## Installation
 
 ### Step 1: Install Python

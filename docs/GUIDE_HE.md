@@ -87,6 +87,24 @@ airtable-backup/
 - emoji
 - schedule
 
+## 🔑 הרשאות Airtable
+
+הכלי דורש הרשאות מינימליות ב-Airtable:
+
+### הרשאות נדרשות
+- `data.records:read` - לקריאת רשומות מהטבלאות
+- `schema.bases:read` - לקריאת מבנה הטבלאות
+
+### יצירת מפתח גישה (Access Token) מינימלי
+1. היכנס ל-[יצירת מפתח Airtable](https://airtable.com/create/tokens)
+2. לחץ על "Create Token"
+3. תן שם למפתח (למשל: "Backup Read Access")
+4. בחר רק את ההרשאות הנדרשות שצוינו למעלה
+5. בחר את הבסיס הספציפי שברצונך לגבות
+6. צור והעתק את המפתח
+
+> ⚠️ שים לב: יש לשמור את המפתח במקום בטוח ולא לשתף אותו עם אף אחד
+
 ## התקנה
 
 ### שלב 1: התקנת Python

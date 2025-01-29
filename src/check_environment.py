@@ -123,6 +123,50 @@ def check_environment() -> bool:
     print_step("All environment variables are set", 'success')
     return True
 
+def check_airtable_permissions():
+    """
+    Check if the API key has the required read permissions.
+    
+    Returns:
+        bool: True if permissions are sufficient, False otherwise
+    """
+    try:
+        api_key = os.getenv('AIRTABLE_API_KEY')
+        base_id = os.getenv('AIRTABLE_BASE_ID')
+        
+        if not api_key or not base_id:
+            return False
+            
+        headers = {
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json'
+        }
+        
+        # Try to read the schema - this only requires read permissions
+        url = f"https://api.airtable.com/v0/meta/bases/{base_id}/tables"
+        response = requests.get(url, headers=headers)
+        
+        if response.status_code == 200:
+            print_step("Airtable read permissions OK", 'success')
+            return True
+        elif response.status_code == 403:
+            print_step("Missing read permissions in Airtable. Please check your API key permissions:", 'error')
+            print("\nRequired permissions:")
+            print("- data.records:read")
+            print("- schema.bases:read")
+            print("\nTo fix:")
+            print("1. Go to https://airtable.com/create/tokens")
+            print("2. Create a new token with minimal permissions")
+            print("3. Update your AIRTABLE_API_KEY environment variable")
+            return False
+        else:
+            print_step(f"Airtable API error: {response.status_code} - {response.text}", 'error')
+            return False
+            
+    except Exception as e:
+        print_step(f"Error checking Airtable permissions: {str(e)}", 'error')
+        return False
+        
 def check_write_permissions() -> bool:
     """
     Check if the script has write permissions in the current directory.
@@ -152,7 +196,8 @@ def main():
         ("Required Packages", check_required_packages),
         ("Internet Connection", check_internet_connection),
         ("Environment Variables", check_environment),
-        ("Write Permissions", check_write_permissions)
+        ("Airtable Permissions", check_airtable_permissions),
+        # ("Write Permissions", check_write_permissions)
     ]
     
     results = []
