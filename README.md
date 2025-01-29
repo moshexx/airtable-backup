@@ -33,7 +33,7 @@ git clone https://github.com/moshexx/airtable-backup.git
 cd airtable-backup
 
 # Install requirements
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # Set your Airtable API key
 export AIRTABLE_API_KEY=your_api_key_here  # Linux/Mac

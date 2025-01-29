@@ -108,7 +108,7 @@ cd airtable-backup
 
 ### שלב 3: התקנת דרישות
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ### שלב 4: הגדרת מפתח API
