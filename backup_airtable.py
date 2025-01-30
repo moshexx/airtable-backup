@@ -5,9 +5,9 @@ import os
 
 def backup_airtable_to_csv():
     # הגדרת משתנים
-    BASE_ID = 'appYINC9GPUFQI4ij'
-    TABLE_NAME = 'יצירת תוכן'  # שם הטבלה במקום ID
-    API_KEY = 'API'  # מפתח ה-API שלך
+    BASE_ID = 'Base ID'
+    TABLE_NAME = 'Table Name'  # שם הטבלה במקום ID
+    API_KEY = 'API KEY'  # מפתח ה-API שלך
     
     # הגדרת כותרות ה-API
     headers = {
