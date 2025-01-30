@@ -174,7 +174,7 @@ python src/backup.py
 
 ### הפעלת גיבוי מתוזמן
 
-[תזמון באמצעות מתזמן המשימות של ווינדוס - מומלץ](task-scheduler-guide.md)
+[תזמון באמצעות מתזמן המשימות של ווינדוס - מומלץ](task-scheduler-guide-heb.md)
 ```bash
 python src/schedule_backup.py
 ```

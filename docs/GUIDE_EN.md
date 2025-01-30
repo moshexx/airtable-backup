@@ -167,6 +167,7 @@ python src/backup.py
 ```
 
 ### Start Scheduled Backup
+[Windows Task Scheduler Guide - recommended](task-scheduler-guide-en.md)
 ```bash
 python src/schedule_backup.py
 ```
